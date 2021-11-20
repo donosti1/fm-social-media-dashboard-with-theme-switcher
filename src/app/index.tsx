@@ -1,5 +1,5 @@
 import React, {ComponentRef, useEffect} from "react";
-import {Grid, Image, Stack, Text, useColorModeValue} from "@chakra-ui/react";
+import {Grid, Image, Stack, Switch, Text, useColorMode, useColorModeValue} from "@chakra-ui/react";
 
 const cardInfo = [
   {
@@ -136,7 +136,7 @@ const Trend = (props: any) => {
   return (
     <Stack alignItems="center" direction="row">
       <Image alt="icon" height={2} src={icon} width={2} />
-      <Text color={color} fontSize="xs">
+      <Text color={color} fontSize="xs" fontWeight="700">
         {props.trendlabel}
       </Text>
     </Stack>
@@ -170,24 +170,30 @@ const CardTemplate = (props: any) => {
       alignSelf="center"
       background={borderColor}
       borderRadius={5}
-      borderTop="5px solid transparent"
+      borderTop="4px solid transparent"
       color="primary.500"
-      flex={1}
-      paddingX={[0, 12]}
+      paddingY={[0, 4]}
       position="relative"
-      spacing={[16, 0]}
+      spacing={[0, 0]}
     >
-      <Stack direction="row">
-        <Image alt="social network logo" height={6} src={icon} width={6} />
-        <Text color={labelColor}>{item.title}</Text>
+      <Stack alignItems="center" direction="row">
+        <Image alt="social network logo" height={4} src={icon} width={4} />
+        <Text color={labelColor} fontSize="xs" fontWeight="700">
+          {item.title}
+        </Text>
       </Stack>
-      <Text color={strongColor} fontSize="4xl">
+      <Text color={strongColor} fontSize="5xl" fontWeight="700" lineHeight="1" paddingTop={4}>
         {item.followers}
       </Text>
-      <Text color={labelColor} textTransform="uppercase">
+      <Text
+        color={labelColor}
+        fontSize="xs"
+        letterSpacing="3px"
+        paddingBottom={4}
+        textTransform="uppercase"
+      >
         {item.label}
       </Text>
-
       <Trend trendUp={item.trendUp} trendlabel={item.trendlabel} />
     </Stack>
   );
@@ -206,16 +212,18 @@ const DetailTemplate = (props: any) => {
       background={cardColor}
       borderRadius={5}
       color="primary.500"
-      height={36}
+      height={28}
       justifyContent="space-between"
       padding={4}
     >
       <Stack alignItems="center" direction="row" justifyContent="space-between" width="100%">
-        <Text color={labelColor}>{props.title}</Text>
-        <Image alt="social network logo" height={6} src={icon} width={6} />
+        <Text color={labelColor} fontSize="xs" fontWeight="700">
+          {props.title}
+        </Text>
+        <Image alt="social network logo" height={5} src={icon} width={5} />
       </Stack>
       <Stack alignItems="center" direction="row" justifyContent="space-between" width="100%">
-        <Text color={strongColor} fontSize="4xl">
+        <Text color={strongColor} fontSize="3xl" fontWeight="700">
           {props.value}
         </Text>
         <Trend trendUp={props.trendUp} trendlabel={props.trendlabel} />
@@ -224,6 +232,8 @@ const DetailTemplate = (props: any) => {
   );
 };
 const App: React.FC = () => {
+  const {toggleColorMode} = useColorMode();
+
   const topBgColor = useColorModeValue("lightMode.100", "darkMode.700");
   const bottomBgColor = useColorModeValue("white", "darkMode.700");
   const strongColor = useColorModeValue("lightMode.900", "darkMode.700");
@@ -250,7 +260,7 @@ const App: React.FC = () => {
         role="main"
         width="100%"
       >
-        <Stack direction="row">
+        <Stack direction="row" justifyContent="space-between">
           <Stack spacing={0}>
             <Text as="h1" color={strongColor} fontSize="2xl" fontWeight="700">
               Social Media Dashboard
@@ -259,15 +269,27 @@ const App: React.FC = () => {
               Total Followers: 23,004
             </Text>
           </Stack>
-          <Stack direction="row" />
+          <Stack alignItems="center" direction="row">
+            <Text fontSize="xs" fontWeight="700">
+              Dark mode
+            </Text>
+            <Switch transform="rotate(180deg)" onChange={toggleColorMode} />
+          </Stack>
         </Stack>
-        <Grid gap={6} templateColumns="repeat(4, 1fr)">
+        <Grid gap={6} paddingTop={6} templateColumns="repeat(4, 1fr)">
           <CardTemplate item="facebook" />
           <CardTemplate item="twitter" />
           <CardTemplate item="instagram" />
           <CardTemplate item="youtube" />
         </Grid>
-        <Text as="h3" color={strongColor} fontSize="2xl" fontWeight="700">
+        <Text
+          as="h3"
+          color={strongColor}
+          fontSize="2xl"
+          fontWeight="700"
+          paddingBottom={4}
+          paddingTop={6}
+        >
           Overview - Today
         </Text>
         <Grid gap={6} templateColumns="repeat(4, 1fr)">

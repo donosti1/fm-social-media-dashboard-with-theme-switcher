@@ -65,7 +65,7 @@ export default extendTheme({
   },
   fontSizes: {
     sm: "0.95rem",
-    xs: "0.9rem",
+    xs: "0.8rem",
   },
   sizes: {
     container: {
