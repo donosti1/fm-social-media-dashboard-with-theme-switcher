@@ -1,5 +1,5 @@
 import React, {ComponentRef, useEffect} from "react";
-import {Image, Stack, Text, useColorModeValue} from "@chakra-ui/react";
+import {Grid, Image, Stack, Text, useColorModeValue} from "@chakra-ui/react";
 
 const cardInfo = [
   {
@@ -7,7 +7,7 @@ const cardInfo = [
     color: "500",
     colorType: "solid",
     icon: "icon-facebook.svg",
-    title: "Bob",
+    title: "@nathanf",
     label: "followers",
     followers: "1987",
     trendUp: true,
@@ -18,7 +18,7 @@ const cardInfo = [
     color: "600",
     colorType: "solid",
     icon: "icon-twitter.svg",
-    title: "Bob",
+    title: "@nathanf",
     label: "followers",
     followers: "1044",
     trendUp: true,
@@ -29,7 +29,7 @@ const cardInfo = [
     color: "",
     colorType: "solid",
     icon: "icon-youtube.svg",
-    title: "Bob",
+    title: "@realnathanf",
     label: "followers",
     followers: "11k",
     trendUp: false,
@@ -40,7 +40,7 @@ const cardInfo = [
     color: "700",
     colorType: "solid",
     icon: "icon-youtube.svg",
-    title: "Bob",
+    title: "Nathan F.",
     label: "Subscribers",
     followers: 8239,
     trendUp: false,
@@ -55,7 +55,80 @@ const cardInfo = [
   });
 
 console.log(result); */
-
+const detailInfo = [
+  {
+    id: 0,
+    key: "facebook",
+    icon: "icon-facebook.svg",
+    title: "Page Views",
+    value: "87",
+    trendUp: true,
+    trendlabel: "3%",
+  },
+  {
+    id: 1,
+    key: "facebook",
+    icon: "icon-facebook.svg",
+    title: "Likes",
+    value: "52",
+    trendUp: false,
+    trendlabel: "2%",
+  },
+  {
+    id: 2,
+    key: "instagram",
+    icon: "icon-instagram.svg",
+    title: "Likes",
+    value: "5462",
+    trendUp: true,
+    trendlabel: "2257%",
+  },
+  {
+    id: 3,
+    key: "instagram",
+    icon: "icon-instagram.svg",
+    title: "Profile Views ",
+    value: "52k",
+    trendUp: true,
+    trendlabel: "1375%",
+  },
+  {
+    id: 4,
+    key: "twitter",
+    icon: "icon-twitter.svg",
+    title: "Retweets",
+    value: "117",
+    trendUp: true,
+    trendlabel: "303%",
+  },
+  {
+    id: 5,
+    key: "twitter",
+    icon: "icon-twitter.svg",
+    title: "Likes",
+    value: "507",
+    trendUp: true,
+    trendlabel: "553%",
+  },
+  {
+    id: 6,
+    key: "youtube",
+    icon: "icon-youtube.svg",
+    title: "Likes",
+    value: "107",
+    trendUp: false,
+    trendlabel: "19%",
+  },
+  {
+    id: 7,
+    key: "youtube",
+    icon: "icon-youtube.svg",
+    title: "Total Views",
+    value: "1407",
+    trendUp: false,
+    trendlabel: "12%",
+  },
+];
 const Trend = (props: any) => {
   const icon = props.trendUp ? "/assets/icon-up.svg" : "/assets/icon-down.svg";
   const color = props.trendUp ? "branding.300" : "branding.400";
@@ -119,12 +192,45 @@ const CardTemplate = (props: any) => {
     </Stack>
   );
 };
+const DetailTemplate = (props: any) => {
+  //const sliderImage = `/assets/${props.image}`;
 
+  const cardColor = useColorModeValue("var(--chakra-colors-lightMode-300)", "darkMode.700");
+
+  const strongColor = useColorModeValue("lightMode.900", "darkMode.700");
+  const labelColor = useColorModeValue("lightMode.900", "darkMode.900");
+  const icon = `/assets/${props.icon}`;
+
+  return (
+    <Stack
+      background={cardColor}
+      borderRadius={5}
+      color="primary.500"
+      height={36}
+      justifyContent="space-between"
+      padding={4}
+    >
+      <Stack alignItems="center" direction="row" justifyContent="space-between" width="100%">
+        <Text color={labelColor}>{props.title}</Text>
+        <Image alt="social network logo" height={6} src={icon} width={6} />
+      </Stack>
+      <Stack alignItems="center" direction="row" justifyContent="space-between" width="100%">
+        <Text color={strongColor} fontSize="4xl">
+          {props.value}
+        </Text>
+        <Trend trendUp={props.trendUp} trendlabel={props.trendlabel} />
+      </Stack>
+    </Stack>
+  );
+};
 const App: React.FC = () => {
   const topBgColor = useColorModeValue("lightMode.100", "darkMode.700");
   const bottomBgColor = useColorModeValue("white", "darkMode.700");
   const strongColor = useColorModeValue("lightMode.900", "darkMode.700");
   const labelColor = useColorModeValue("lightMode.900", "darkMode.900");
+  const detailCards = detailInfo.map((de) => {
+    return <DetailTemplate {...de} key={de.id} />;
+  });
 
   return (
     <>
@@ -155,16 +261,20 @@ const App: React.FC = () => {
           </Stack>
           <Stack direction="row" />
         </Stack>
-        <Stack direction="row">
+        <Grid gap={6} templateColumns="repeat(4, 1fr)">
           <CardTemplate item="facebook" />
           <CardTemplate item="twitter" />
           <CardTemplate item="instagram" />
           <CardTemplate item="youtube" />
-        </Stack>
+        </Grid>
         <Text as="h3" color={strongColor} fontSize="2xl" fontWeight="700">
           Overview - Today
         </Text>
+        <Grid gap={6} templateColumns="repeat(4, 1fr)">
+          {detailCards}
+        </Grid>
       </Stack>
+      <Stack />
     </>
   );
 };
