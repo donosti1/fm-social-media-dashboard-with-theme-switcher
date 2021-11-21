@@ -1,12 +1,9 @@
 import {extendTheme, theme} from "@chakra-ui/react";
-import {mode} from "@chakra-ui/theme-tools";
+import {mode, cssVar} from "@chakra-ui/theme-tools";
 
-/* hsl(37, 97%, 70%)
-hsl(329, 70%, 58%)
+const $widthsw = cssVar("switch-track-width");
+const $heightsw = cssVar("switch-track-height");
 
-hsl(210, 78%, 56%)
-hsl(146, 68%, 55%)
- */
 export default extendTheme({
   config: {
     initialColorMode: "dark",
@@ -25,11 +22,13 @@ export default extendTheme({
       300: "hsl(230, 17%, 14%)",
       500: "hsl(232, 19%, 15%)",
       700: "hsl(228, 28%, 20%)",
+      800: "#333a56",
       900: "hsl(228, 34%, 66%)",
     },
     lightMode: {
       100: "hsl(225, 100%, 98%)",
       300: "hsl(227, 47%, 96%)",
+      400: "#e1e3f0",
       500: "hsl(230, 22%, 74%)",
       700: "hsl(228, 12%, 44%)",
       900: "hsl(230, 17%, 14%)",
@@ -102,6 +101,24 @@ export default extendTheme({
             color: `${props.colorScheme}.600`,
           },
         }),
+      },
+    },
+    Switch: {
+      baseStyle: (props: any) => ({
+        track: {
+          bg: mode("lightMode.500", undefined)(props),
+        },
+        thumb: {
+          bg: mode("lightMode.100", "darkMode.700")(props),
+        },
+      }),
+      sizes: {
+        md: {
+          container: {
+            [$widthsw.variable]: "2.6rem",
+            [$heightsw.variable]: "1.3rem",
+          },
+        },
       },
     },
   },

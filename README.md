@@ -6,8 +6,8 @@ This is a solution to the [Social media dashboard with theme switcher challenge 
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-<!--   - [Screenshot](#screenshot)
-  - [Links](#links) -->
+  - [Screenshot](#screenshot)
+  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
@@ -23,15 +23,17 @@ Users should be able to:
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
 
-<!-- ### Screenshot
+### Screenshots
 
-![](./screenshot.jpg)
+![Screenshot](./screenshot.jpg)
+
+![Screenshot](./screenshot-dark.jpg)
 
 ### Links
 
 - Solution URL: [https://github.com/donosti1/fm-social-media-dashboard-with-theme-switcher](https://github.com/donosti1/fm-social-media-dashboard-with-theme-switcher)
 - Live Site URL: [https://fm-social-media-dashboard-with-theme-switcher-donosti1.vercel.app/](https://fm-social-media-dashboard-with-theme-switcher-donosti1.vercel.app/)
- -->
+
 ## My process
 
 ### Built with

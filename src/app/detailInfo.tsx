@@ -1,0 +1,78 @@
+import React from "react";
+
+const detailInfo = [
+  {
+    id: 0,
+    key: "facebook",
+    icon: "icon-facebook.svg",
+    title: "Page Views",
+    value: "87",
+    trendUp: true,
+    trendlabel: "3%",
+  },
+  {
+    id: 1,
+    key: "facebook",
+    icon: "icon-facebook.svg",
+    title: "Likes",
+    value: "52",
+    trendUp: false,
+    trendlabel: "2%",
+  },
+  {
+    id: 2,
+    key: "instagram",
+    icon: "icon-instagram.svg",
+    title: "Likes",
+    value: "5462",
+    trendUp: true,
+    trendlabel: "2257%",
+  },
+  {
+    id: 3,
+    key: "instagram",
+    icon: "icon-instagram.svg",
+    title: "Profile Views ",
+    value: "52k",
+    trendUp: true,
+    trendlabel: "1375%",
+  },
+  {
+    id: 4,
+    key: "twitter",
+    icon: "icon-twitter.svg",
+    title: "Retweets",
+    value: "117",
+    trendUp: true,
+    trendlabel: "303%",
+  },
+  {
+    id: 5,
+    key: "twitter",
+    icon: "icon-twitter.svg",
+    title: "Likes",
+    value: "507",
+    trendUp: true,
+    trendlabel: "553%",
+  },
+  {
+    id: 6,
+    key: "youtube",
+    icon: "icon-youtube.svg",
+    title: "Likes",
+    value: "107",
+    trendUp: false,
+    trendlabel: "19%",
+  },
+  {
+    id: 7,
+    key: "youtube",
+    icon: "icon-youtube.svg",
+    title: "Total Views",
+    value: "1407",
+    trendUp: false,
+    trendlabel: "12%",
+  },
+];
+
+export default detailInfo;
